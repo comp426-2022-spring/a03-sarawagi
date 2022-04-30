@@ -79,15 +79,14 @@ app.get('/app/flips/:number/', (req, res) => {
   res.json(rawjson)
 });
 
-app.get('/app/flip/call/heads/', (req, res) => {
-  res.status(200);
-  res.json(flipACoin('heads'));
-});
+app.get('/app/flip/call/heads', (req, res) => {
+    res.status(200).json(flipACoin("heads"))
+})
 
-app.get('/app/flip/call/tails/', (req, res) => {
-  res.status(200);
-  res.json(flipACoin('tails'));
-});
+
+app.get('/app/flip/call/tails', (req, res) => {
+    res.status(200).json(flipACoin("tails"))
+})
 
 app.use(function(req, res){
   res.status(404).send('404 NOT FOUND')
