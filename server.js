@@ -54,7 +54,7 @@ function coinFlip() {
     } else {
       result = 'lose';
     }
-    return {call: call, flip: flip, result: result}
+    return {call: call, flip: flip, result: result}}
 
 app.get('/app/', (req, res) => {
   res.statusCode = 200;
