@@ -71,15 +71,8 @@ app.get('/app/flip/', (req, res) => {
 });
 
 app.get('/app/flips/:number/', (req, res) => {
-  res.status(200);
-  const flips = req.params.number || 1;
-  const values = coinFlips(flips);
-  const rawjson = {
-      "raw" : values,
-      "summary": countFlips(values)
-  };
-  res.json(rawjson)
-});
+    var flips = coinFlips(req.params.number)
+    res.status(200).json({ "raw" : flips, "summary" : countFlips(flips)})});
 
 app.get('/app/flip/call/heads', (req, res) => {
     res.status(200).json(flipACoin("heads"))
