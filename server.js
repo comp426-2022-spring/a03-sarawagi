@@ -20,12 +20,14 @@ function coinFlip() {
     //console.log(coinFlip())
  
     function coinFlips(flips) {
-      const result = []
-      for(let i = 0; i < flips; i++){
-        result[i] = coinFlip();
-      }
-    return result;
+    if (flips < 1 || typeof flips == 'undefined') {
+      flips = 1;
     }
+    for (var i = 0; i < flips; i++) {  
+      flipList.push(coinFlip());
+    }
+    return flipList;
+}
    
     
     function countFlips(array) {
@@ -36,23 +38,23 @@ function coinFlip() {
       if(array[i] == "heads"){
         nh++;
       }
-      else if(array[i] == "tails"){
+      if(array[i] == "tails"){
         nt++;
       }
     }
-    return "{ tails: "+ nt +", heads: "+ nh + " }"
+     return {heads: h, tails: t};
     }
    
     
     function flipACoin(call) {
-    let flipresult = coinFlip();
-    if(flipresult == call){
-      return "{ call: '"+call+"', flip: '"+flipresult+"', result: 'win' }"
+    let flip = coinFlip()
+    let result = '';
+    if (flip == call) {
+      result = 'win';
+    } else {
+      result = 'lose';
     }
-    else if( flipresult != call){
-      return "{ call: '"+call+"', flip: '"+flipresult+"', result: 'lose' }"
-    }
-    }
+    return {call: call, flip: flip, result: result}
 
 app.get('/app/', (req, res) => {
   res.statusCode = 200;
