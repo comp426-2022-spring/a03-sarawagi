@@ -13,19 +13,16 @@ const server = app.listen(port, () => {
 
 //coin code
 function coinFlip() {
-    //return (Math.floor(Math.random() * 2) == 0) ? 'heads' : 'tails';
     return Math.random() > .5 ? ("heads") : ("tails")
     }
  
     //console.log(coinFlip())
  
     function coinFlips(flips) {
-    if (flips < 1 || typeof flips == 'undefined') {
-      flips = 1;
-    }
-    for (var i = 0; i < flips; i++) {  
-      flipList.push(coinFlip());
-    }
+      var flipList = [];
+      for (let i = 0; i < flips; i++) {
+        flipList[i] = coinFlip();
+      }
     return flipList;
 }
    
@@ -48,13 +45,12 @@ function coinFlip() {
     
     function flipACoin(call) {
     let flip = coinFlip()
-    let result = '';
     if (flip == call) {
       result = 'win';
     } else {
       result = 'lose';
     }
-    return {call: call, flip: flip, result: result}}
+    return {"call": call, "flip": flip, "result": result}}
 
 app.get('/app/', (req, res) => {
   res.statusCode = 200;
