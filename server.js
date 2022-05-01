@@ -64,15 +64,14 @@ app.get('/app/', (req, res) => {
 });
 
 app.get('/app/flip/', (req, res) => {
-  res.status(200);
-  const ans = coinFlip();
-  const flipResult = {"flip" : ans};
-  res.json(flipResult);
+ const ans = coinFlip();
+ res.status(200).json({'flip' : flip})
 });
 
 app.get('/app/flips/:number/', (req, res) => {
     var flips = coinFlips(req.params.number)
-    res.status(200).json({ "raw" : flips, "summary" : countFlips(flips)})});
+    const num = countFlips(flips)
+    res.status(200).json({ "raw" : flips, "summary" : num})});
 
 app.get('/app/flip/call/heads', (req, res) => {
     res.status(200).json(flipACoin("heads"))
@@ -84,4 +83,5 @@ app.get('/app/flip/call/tails', (req, res) => {
 
 app.use(function(req, res){
   res.status(404).send('404 NOT FOUND')
+  res.type("text/plain");
 });
