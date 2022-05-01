@@ -5,7 +5,7 @@ const args = require('minimist')(process.argv.slice(2))
 
 args['port']
  
-const port = args.port || process.nextTick.PORT || 5000
+const port = args.port || 5000
 //create a server
 const server = app.listen(port, () => {
   console.log("App is running on port %PORT%".replace("%PORT%", port))
@@ -21,7 +21,7 @@ function coinFlip() {
     function coinFlips(flips) {
       var flipList = [];
       for (let i = 0; i < flips; i++) {
-        flipList[i] = coinFlip();
+        flipList.push(coinFlip());
       }
     return flipList;
 }
@@ -61,7 +61,7 @@ app.get('/app/', (req, res) => {
 
 app.get('/app/flip/', (req, res) => {
  const ans = coinFlip();
- res.status(200).json({'flip' : flip})
+ res.status(200).json({'flip' : ans})
 });
 
 app.get('/app/flips/:number/', (req, res) => {
