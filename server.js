@@ -26,7 +26,6 @@ function coinFlip() {
     return flipList;
 }
    
-    
     function countFlips(array) {
     let nt = 0;
     let nh = 0;
@@ -42,7 +41,6 @@ function coinFlip() {
      return {heads: nh, tails: nt};
     }
    
-    
     function flipACoin(call) {
     let flip = coinFlip()
     if (flip == call) {
