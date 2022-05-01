@@ -39,7 +39,7 @@ function coinFlip() {
         nt++;
       }
     }
-     return {heads: h, tails: t};
+     return {heads: nh, tails: nt};
     }
    
     
